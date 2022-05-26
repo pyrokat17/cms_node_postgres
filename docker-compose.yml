@@ -1,0 +1,29 @@
+version: "3"
+
+networks:
+  database_dev:
+    name: database_dev
+    driver: bridge
+
+services:
+
+  dev-postgres:
+    image: postgres
+    container_name: dev-postgres
+    environment:
+      POSTGRES_PASSWORD: "easy-password"
+    networks:
+      - database_dev
+    ports:
+      - 5432:5432
+      
+  dev-pgadmin:
+    image: dpage/pgadmin4
+    container_name: dev-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "user@example.example"
+      PGADMIN_DEFAULT_PASSWORD: "SuperSecret"
+    networks:
+      - database_dev
+    ports:
+      - 8081:80

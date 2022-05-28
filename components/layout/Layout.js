@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import { Container, Segment } from "semantic-ui-react";
-export default function Layout() {
+import Nav from "@/components/layout/Nav";
+export default function Layout({ children }) {
 	return (
 		<div
 			style={{
@@ -22,7 +23,9 @@ export default function Layout() {
 						overflowY: "scroll",
 						overflowX: "hidden",
 					}}
-				></Segment>
+				>
+					<Nav />
+				</Segment>
 				<Segment
 					inverted
 					style={{
@@ -32,7 +35,9 @@ export default function Layout() {
 						overflowY: "scroll",
 						overflowX: "hidden",
 					}}
-				></Segment>
+				>
+					{children}
+				</Segment>
 			</div>
 		</div>
 	);
